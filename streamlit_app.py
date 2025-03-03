@@ -3,10 +3,11 @@ import requests
 import time
 
 FLASK_API_URL = "https://seer-api.onrender.com/streamlit-upload"
+# FLASK_API_URL = "http://localhost:8000/streamlit-upload"
 
-st.title("PDF Converter")
-st.write("This app allows you to convert PDF documents to screen reader-friendly text. Depending on the size of the document, it may take a few minutes to convert. Please upload your PDF document below to get started. Your converted document will be displayed below.")
-st.write("Before converting another document, please clear the current document by clicking the 'x' button to the right of the selected document.")
+st.html("<h1>PDF Converter</h1>")
+st.html("<p>This app  allows you to convert PDF documents to screen reader-friendly text. Depending on the size of the document, it may take a few minutes to convert. Please upload your PDF document below to get started. Your converted document will be displayed below.</p>")
+st.html("<p>Before converting another document, please clear the current document by clicking the 'x' button to the right of the selected document.</p>")
 
 # Initialize session state for processing
 if "processing" not in st.session_state:
@@ -55,7 +56,7 @@ if uploaded_file is not None:
             # audio_caption.empty()
 
             st.success("Document converted successfully! Your converted document is displayed below.")
-            st.write(response_json["md"]) 
+            st.html(response_json["html"]) 
         else:
             error_audio_placeholder = st.empty()
             error_audio_placeholder.audio("static/error.wav", format="audio/wav", loop=False, autoplay=True)
