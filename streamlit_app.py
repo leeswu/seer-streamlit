@@ -10,12 +10,6 @@ st.write("This app allows you to convert PDF documents to screen reader friendly
 uploaded_file = st.file_uploader("Choose a PDF file")
 
 if uploaded_file is not None:
-    # If a file is uploaded, set it in the session state and clear previous UI components
-    st.session_state.uploaded_file = uploaded_file
-    for key in list(st.session_state.keys()):
-        if key != "uploaded_file":  # Don't clear the uploaded file state
-            del st.session_state[key]
-    
     upload_status = st.success(f"File uploaded: {uploaded_file.name}")
     processing_status = st.info(f"{uploaded_file.name} is now being converted...")
 
@@ -38,8 +32,9 @@ if uploaded_file is not None:
             # Now play success sound
             success_audio_placeholder = st.empty()
             success_audio_placeholder.audio("static/success.wav", format="audio/wav", loop=False, autoplay=True)
-            time.sleep(2)
+            time.sleep(1)
             success_audio_placeholder.empty()
+
 
             upload_status.empty()
             processing_status.empty()
@@ -59,7 +54,7 @@ if uploaded_file is not None:
             
             st.error(f"There was an error converting your document. Error: {response}")
     except Exception as e:
-        error_audio_placeholder = st.empty()
+        loading_audio.empty()
         error_audio_placeholder.audio("static/error.wav", format="audio/wav", loop=False, autoplay=True)
         time.sleep(1)
         error_audio_placeholder.empty()
