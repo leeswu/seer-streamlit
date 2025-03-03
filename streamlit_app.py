@@ -6,7 +6,7 @@ FLASK_API_URL = "https://seer-api.onrender.com/streamlit-upload"
 # FLASK_API_URL = "http://localhost:8000/streamlit-upload"
 
 st.title("PDF Converter")
-st.write("This app allows you to convert PDF documents to screen reader friendly text. Please upload your PDF document below to get started. Your converted document will be displayed below.")
+st.write("This app allows you to convert PDF documents to screen reader friendly text. Depending on the size of the document, it may take a few minutes to convert. Please upload your PDF document below to get started. Your converted document will be displayed below.")
 
 uploaded_file = st.file_uploader("Choose a PDF file")
 
