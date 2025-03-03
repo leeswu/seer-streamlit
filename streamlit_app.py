@@ -11,13 +11,22 @@ st.write("Before converting another document, please clear the current document 
 # Initialize session state for processing
 if "processing" not in st.session_state:
     st.session_state["processing"] = False
+if "was_processing" not in st.session_state:
+    st.session_state["was_processing"] = False
 
 # Create file uploader first
 uploaded_file = st.file_uploader("Choose a PDF file", disabled=st.session_state["processing"])
 
+# Check if file was cleared (user clicked "x")
+if st.session_state["was_processing"] and uploaded_file is None:
+    st.session_state["processing"] = False
+    st.session_state["was_processing"] = False
+    st.rerun()
+
 # Then check if a file was just uploaded and handle processing state
 if uploaded_file is not None and not st.session_state["processing"]:
     st.session_state["processing"] = True
+    st.session_state["was_processing"] = True
     st.rerun()
 
 if uploaded_file is not None:
