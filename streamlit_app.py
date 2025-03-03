@@ -6,7 +6,7 @@ FLASK_API_URL = "https://seer-api.onrender.com/streamlit-upload"
 
 st.title("PDF Converter")
 st.write("This app allows you to convert PDF documents to screen reader-friendly text. Depending on the size of the document, it may take a few minutes to convert. Please upload your PDF document below to get started. Your converted document will be displayed below.")
-st.write("Before converting another document, please clear the current document by clicking the 'x' button beside the document name.")
+st.write("Before converting another document, please clear the current document by clicking the 'x' button to the right of the selected document.")
 
 # Initialize session state for processing
 if "processing" not in st.session_state:
