@@ -55,7 +55,7 @@ if uploaded_file is not None:
             # audio_caption.empty()
 
             st.success("Document converted successfully! Your converted document is displayed below.")
-            st.markdown(response_json["md"]) 
+            st.write(response_json["md"]) 
         else:
             error_audio_placeholder = st.empty()
             error_audio_placeholder.audio("static/error.wav", format="audio/wav", loop=False, autoplay=True)
