@@ -2,8 +2,8 @@ import streamlit as st
 import requests
 import time
 
-# FLASK_API_URL = "https://seer-api.onrender.com/streamlit-upload"
-FLASK_API_URL = "http://localhost:8000/streamlit-upload"
+FLASK_API_URL = "https://seer-api.onrender.com/streamlit-upload"
+# FLASK_API_URL = "http://localhost:8000/streamlit-upload"
 
 st.title("PDF Converter")
 st.write("This app allows you to convert PDF documents to screen reader friendly text. Please upload your PDF document below to get started. Your converted document will be displayed below.")
