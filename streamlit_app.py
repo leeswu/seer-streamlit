@@ -11,13 +11,15 @@ st.write("This app allows you to convert PDF documents to screen reader-friendly
 if "processing" not in st.session_state:
     st.session_state["processing"] = False
 
-# Disable uploader if a file is being processed
+# Create file uploader first
 uploaded_file = st.file_uploader("Choose a PDF file", disabled=st.session_state["processing"])
 
+# Then check if a file was just uploaded and handle processing state
 if uploaded_file is not None and not st.session_state["processing"]:
-    # Mark as processing
     st.session_state["processing"] = True
+    st.rerun()
 
+if uploaded_file is not None:
     upload_status = st.success(f"File uploaded: {uploaded_file.name}")
     processing_status = st.info(f"{uploaded_file.name} is now being converted...")
 
